@@ -238,11 +238,13 @@ body {
     justify-content: flex-end;
     gap: 0.5rem;
     padding-top: .3rem;
+    opacity: 0;
+    transition: .3s ease-in;
 }
 .note_header a{
   cursor: pointer;
 }
-.note_header a svg{
+.note_header a svg,img{
     border-radius: 50%;
     padding: 0.3rem;
     fill: rgb(250, 44, 44);

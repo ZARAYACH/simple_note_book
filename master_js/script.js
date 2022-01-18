@@ -30,3 +30,15 @@ cancel.addEventListener('click',function(){
     delete_note.classList.remove("to_display");
 })
 
+let note = document.querySelectorAll(".note");
+note.forEach(element => {
+    let e = element.addEventListener("mouseenter", function(e){
+        e.target.querySelector(".note_header").style.opacity = "1";
+});
+})
+note.forEach(element => {
+    element.addEventListener("mouseleave", function(e){
+    e.target.querySelector(".note_header").style.opacity = "0";
+});
+})
+

@@ -1,7 +1,18 @@
 <?php 
   session_start();
+  require_once '../classes/user.cls.php';
+  require_once '../classes/note.cls.php';
   if(isset($_SESSION['user'])){
     $user = unserialize($_SESSION['user']);
+    $userId = $user->getId();
+    $username = $user->getUsername();
+    $firstName = $user->getFirstName();
+    $lastName = $user->getLastName();
+    $email = $user->getEmail();
+    $admin = $user->getAdmin();
+  }else{
+    header ("location:..\pages\login.php?error=wrongway");
+    exit();
   }
 
     if(isset($_GET['saved'])){
@@ -234,7 +245,7 @@
         do you really want to delete this note ?
       </div>
             <form action="../auth/deletenote.inc.php" method="POST">
-                <input style="display: none;" name="fileName" type="text" id="to_be_delete">
+                <input style="display: none;" name="noteId" type="text" id="to_be_delete">
                 <input class="cancel" type="button" name="cancel" value="cancel" >
                 <input class="delete_button" type="submit" name="delete" value="Delete">
               </div>
@@ -251,8 +262,8 @@
           </form>
         </div>
         <div class="user">
-            <div class="profil"><img src="../assets/Mesaman for ever§HelloWorld.png" alt=''></div>
-            <div class="user-name"></div>
+            <div class="profil"><img src="../assets/i168238-msemen.jpeg" alt=''></div>
+            <div class="user-name"><?php echo "$firstName<br>$lastName"; ?></div>
         </div>
         </div>
         
@@ -322,7 +333,17 @@ Log out</button>
 
     <?php
 
+        $return = note::allNotes($userId);
+        if($return){
+          $j=1;
+          while($row=$return->fetch()){
+            note::dispalayNote($row[1],$row[2],$row[0]);   
+          }
+        }
 
+      
+
+      
       ?>
     
      

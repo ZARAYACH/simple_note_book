@@ -1,25 +1,25 @@
 <?php
 session_start();
 
-if(!empty($_POST["titre"]) and !empty($_POST['note'])){
-    $title=$_POST["titre"];
-    $username=$_SESSION['username'];
-    $note_path="../note_user/$username#$title.txt";
-    $fp = fopen($note_path,"w");
-    if($fp!=false){
-      fwrite($fp,$_POST['note']);
-    fclose($fp);
-    if(file_exists($note_path)){
-      header ("location:..\pages\user-home.php?saved=True");
-      exit();
-    }else{
-        header ("location:..\pages\user-home.php?saved=nope");
-        exit();
-    }
-  }else{
-    header ("location:..\pages\user-home.php?saved=changeTItre");
-        exit();
+require_once '../classes/user.cls.php';
+require_once '../classes/connection.cls.php';
+require_once '../classes/note.cls.php';
 
+if(!empty($_POST["titre"]) and !empty($_POST['note'])){
+  $user = unserialize($_SESSION['user']);
+  $userId = $user->getId();
+  $username = $user->getUsername();
+  $noteTitre=$_POST["titre"];
+  $noteBody = $_POST["note"];
+  $id=null;
+  $note = new note($id,$userId,$noteTitre,$noteBody);
+  $return = $note->addNote($note->getUserId(),$note->getNoteTitle(),$note->getNoteBody());
+  if(!$return){
+    header ("location:..\pages\user-home.php?saved=False");
+    exit();
+  }else{
+    header ("location:..\pages\user-home.php?saved=True");
+    exit();
   }
     }
     else

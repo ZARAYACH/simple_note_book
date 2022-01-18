@@ -3,6 +3,7 @@
 require_once 'connection.cls.php';
 
 class user{
+    private $id;
     private $username;
     private $firstname;
     private $lastname;
@@ -10,6 +11,15 @@ class user{
     private $password;
     private $admin;
     
+   
+    public function setId($id){
+      $this->id = $id;
+   }
+   public function getId(){
+      return $this->id;
+   }
+
+
     public function setUserName($username){
         $this->username = $username;
      }

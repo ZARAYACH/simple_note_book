@@ -16,7 +16,7 @@
         public static function actionOnDB($sql){
             $result = false;
             $conn = self::connectToDb();
-            if($conn->exec($sql) != false){
+            if($conn->exec($sql) !== false){
                 $result = true;
             }
             $conn = null ;
@@ -26,7 +26,7 @@
         public static function selectionFromDb($sql){
             $conn = self::connectToDb();
             $cur = $conn->query($sql);
-            if( $cur != false){
+            if( $cur !== false){
                 return $cur;
             }
             return false;

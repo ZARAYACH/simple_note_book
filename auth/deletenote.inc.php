@@ -1,9 +1,12 @@
 <?php
 
+require_once '../classes/note.cls.php';
+
 if(isset($_POST['delete'])){
 
-    $fileNme = $_POST['fileName'] ;
-    if(!unlink($fileNme)){
+    $id = $_POST['noteId'] ;
+    $return = note::deleteNote($id);
+    if(!$return){
         header ("location:..\pages\user-home.php?error=deleteWithFailure");
     exit();
     }else{
