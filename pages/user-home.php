@@ -164,7 +164,6 @@ Log out</button>
     <div class="content">
 
     <?php
-
         $return = note::allNotes($userId);
         if($return){
           $j=1;
@@ -172,13 +171,7 @@ Log out</button>
             note::dispalayNote($row[1],$row[2],$row[0]);   
           }
         }
-
-      
-
-      
       ?>
-    
-     
     </div>
     <script src="../master_js/script.js"></script>
 </body>

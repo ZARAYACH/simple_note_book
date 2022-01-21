@@ -103,7 +103,7 @@ class note{
         return $result;
     }
 
-    public function addToFavorites($id)
+    public static function addToFavorites($id)
     {
         $result = false;
         $sql = "update notes set favorite = true where note_id = $id"; 
@@ -173,10 +173,10 @@ class note{
     public static function dispalayNote($noteTitre,$noteBody,$noteID)
     {
         echo("<div class='note'>
-        <div class='note_header'>
-        <a id='' class='favorite_button'><img src='../assets/favorite_border_black_24dp.svg'></img> </a>
-        <a id='' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
-        <a id='' class='archive_button'> <img src='../assets/archive_black_24dp.svg'></img></a>
+        <div noteID='$noteID' class='note_header'>
+        <a id='fav'  class='favorite_button'><img src='../assets/favorite_border_black_24dp.svg'></img> </a>
+        <a id='edit' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
+        <a id='arch' class='archive_button'> <img src='../assets/archive_black_24dp.svg'></img></a>
         <a id='del$noteID' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
 
         </div><script>

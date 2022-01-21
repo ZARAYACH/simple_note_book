@@ -42,3 +42,23 @@ note.forEach(element => {
 });
 })
 
+let favBtn = document.querySelectorAll("#fav");
+for(let i = 0;i < favBtn.length;i++){
+    favBtn[i].addEventListener('click',function(e){
+       let noteID = e.currentTarget.parentNode.getAttribute("noteID");  
+        let url = "../auth/userFun.inc.php";
+        let data = {
+            what : "true",
+            ID : noteID
+        }
+        const otherpram = {
+            body : data,
+            method : "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+              }
+        }
+        fetch(url,otherpram)
+        .then(res =>console.log(res.text));
+        })
+}
