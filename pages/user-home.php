@@ -17,201 +17,33 @@
 
     if(isset($_GET['saved'])){
       if($_GET['saved']=="True"){
-        echo("<script> 
-        let message ='Your note has been  saved with success'; 
-        let pop_up = `<div class='pop_up'>
-        <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-        <div class='message'>
-            <img src='../assets/done_black_24dp.svg' alt=''>
-            <p>\${message}</p></div>
-      </div>`
-       document.write(pop_up);
-       let dd = document.querySelector('.pop_up');
-       let close_button = document.querySelector('#close');
-       close_button.addEventListener('click',function(){
-        dd.classList.remove('get_out');
-    })
-       setTimeout(function(){
-  
-         dd.classList.add('get_out');
-       },500)
-       setTimeout(function(){
-         dd.classList.remove('get_out');
-     },5000);
-        
-      </script>");
+          connection::popUp("ok","Your note has been  saved with success");
       }
     }else if(isset($_GET['error'])){
         if($_GET['error']=='deleteWithSuccess'){
-          echo("<script> 
-          let message ='Your note has been deleted'; 
-          let pop_up = `<div class='pop_up'>
-          <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-          <div class='message'>
-              <img src='../assets/done_black_24dp.svg' alt=''>
-              <p>\${message}</p></div>
-        </div>`
-         document.write(pop_up);
-         let dd = document.querySelector('.pop_up');
-         let close_button = document.querySelector('#close');
-         close_button.addEventListener('click',function(){
-          dd.classList.remove('get_out');
-      })
-         setTimeout(function(){
-    
-           dd.classList.add('get_out');
-         },500)
-         setTimeout(function(){
-           dd.classList.remove('get_out');
-       },5000);
-          
-        </script>");
+          connection::popUp("ok","Your note has been deleted");
         }
-    
        }
         if(isset($_GET['saved'])){
           if($_GET['saved']=="nope"){
-          echo("<script> 
-          let message ='Your note has not been saved repeat later'; 
-          let pop_up = `<div class='pop_up'>
-          <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-          <div class='message'>
-              <img src='../assets/error2.svg' alt=''>
-              <p>\${message}</p></div>
-        </div>`
-         document.write(pop_up);
-         let dd = document.querySelector('.pop_up');
-         dd.style.backgroundColor = '#bd362f';
-         let close_button = document.querySelector('#close');
-         close_button.addEventListener('click',function(){
-          dd.classList.remove('get_out');
-      })
-         setTimeout(function(){
-    
-           dd.classList.add('get_out');
-         },500)
-         setTimeout(function(){
-           dd.classList.remove('get_out');
-       },5000);
-          
-        </script>");
+          connection::popUp("error","Your note has not been saved repeat later");
         }
       }
-      if(isset($_GET['saved'])){
-        if($_GET['saved']=="changeTItre"){
-        echo("<script> 
-        let message ='please change your note title'; 
-        let pop_up = `<div class='pop_up'>
-        <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-        <div class='message'>
-            <img src='../assets/error2.svg' alt=''>
-            <p>\${message}</p></div>
-      </div>`
-       document.write(pop_up);
-       let dd = document.querySelector('.pop_up');
-       dd.style.backgroundColor = '#bd362f';
-       let close_button = document.querySelector('#close');
-       close_button.addEventListener('click',function(){
-        dd.classList.remove('get_out');
-    })
-       setTimeout(function(){
-  
-         dd.classList.add('get_out');
-       },500)
-       setTimeout(function(){
-         dd.classList.remove('get_out');
-     },5000);
-        
-      </script>");
-      }
-    }
     if(isset($_GET['error'])){
       if($_GET['error']=="deleteWithFailure"){
-      echo("<script> 
-      let message ='your note has not been deleted please repeat later '; 
-      let pop_up = `<div class='pop_up'>
-      <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-      <div class='message'>
-          <img src='../assets/error2.svg' alt=''>
-          <p>\${message}</p></div>
-    </div>`
-     document.write(pop_up);
-     let dd = document.querySelector('.pop_up');
-     dd.style.backgroundColor = '#bd362f';
-     let close_button = document.querySelector('#close');
-     close_button.addEventListener('click',function(){
-      dd.classList.remove('get_out');
-  })
-     setTimeout(function(){
-
-       dd.classList.add('get_out');
-     },500)
-     setTimeout(function(){
-       dd.classList.remove('get_out');
-   },5000);
-      
-    </script>");
+        connection::popUp("error","your note has not been deleted please repeat later");
     }
   }
   if(isset($_GET['error'])){
     if($_GET['error']=='savedImg'){
-      echo("<script> 
-      let message ='Your image is saved successfully'; 
-      let pop_up = `<div class='pop_up'>
-      <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-      <div class='message'>
-          <img src='../assets/done_black_24dp.svg' alt=''>
-          <p>\${message}</p></div>
-    </div>`
-     document.write(pop_up);
-     let dd = document.querySelector('.pop_up');
-     let close_button = document.querySelector('#close');
-     close_button.addEventListener('click',function(){
-      dd.classList.remove('get_out');
-  })
-     setTimeout(function(){
-
-       dd.classList.add('get_out');
-     },500)
-     setTimeout(function(){
-       dd.classList.remove('get_out');
-   },5000);
-      
-    </script>");
+      connection::popUp("ok","Your image is saved successfully");
     }
-
    }
    if(isset($_GET['saved'])){
     if($_GET['saved']=="imptyinput"){
-    echo("<script> 
-    let message ='please file your note we connot save impty note'; 
-    let pop_up = `<div class='pop_up'>
-    <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
-    <div class='message'>
-        <img src='../assets/error2.svg' alt=''>
-        <p>\${message}</p></div>
-  </div>`
-   document.write(pop_up);
-   let dd = document.querySelector('.pop_up');
-   dd.style.backgroundColor = '#bd362f';
-   let close_button = document.querySelector('#close');
-   close_button.addEventListener('click',function(){
-    dd.classList.remove('get_out');
-})
-   setTimeout(function(){
-
-     dd.classList.add('get_out');
-   },500)
-   setTimeout(function(){
-     dd.classList.remove('get_out');
- },5000);
-    
-  </script>");
+    connection::popUp("error","please file your note we connot save impty note");
   }
-}
-    
-      
-  
+}      
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -349,19 +181,5 @@ Log out</button>
      
     </div>
     <script src="../master_js/script.js"></script>
-    
-   
-    <script> 
-      function delete_approve(real_note_titre){
-        overlay2.classList.add("to_display");
-        delete_note.classList.add("to_display");
-
-      let user = "<?php echo($username) ?>"
-      let file_name = '../note_user/'+user+'#'+ real_note_titre+'.txt';
-      let in_his = document.querySelector("#to_be_delete");
-      in_his.setAttribute('value',file_name);
-       
-          }
-  </script>
 </body>
 </html>

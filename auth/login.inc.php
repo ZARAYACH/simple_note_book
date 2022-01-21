@@ -2,7 +2,7 @@
 
 if($_POST){
     $username = filter_var($_POST['user-name'], FILTER_SANITIZE_STRING);
-    $pwd =$_POST['password'];
+    $pwd =$_POST['password']; 
 
 }else{
     header ("location:..\pages\login.php?error=wrongway");

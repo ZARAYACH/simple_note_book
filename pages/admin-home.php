@@ -1,8 +1,11 @@
 <?php
+require_once "../classes/admin.cls.php";
     session_start();
     if(isset($_SESSION['admin'])){
         $admin = unserialize($_SESSION['admin']);
         echo("with success");
+
+        echo"<br>". $admin->getEmail()."<BR>".$admin->getFirstName();
     }else{
         header ("location:..\pages\signup.php?error=wrongWay");
         exit();
@@ -17,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../second_css/admin-home.css">
-    <title>Document</title>
+    <title>simple note book</title>
 </head>
 <body>
     <H1>admin dashbord</H1>

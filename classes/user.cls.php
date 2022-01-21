@@ -11,7 +11,6 @@ class user{
     private $password;
     private $admin;
     
-   
     public function setId($id){
       $this->id = $id;
    }
