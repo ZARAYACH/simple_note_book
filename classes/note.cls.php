@@ -114,7 +114,7 @@ class note{
         return $result;
         
     }
-    public function removeFromFavorites($id)
+    public static function removeFromFavorites($id)
     {
         $result = false;
         $sql = "update notes set favorite = false where note_id = $id"; 
@@ -126,7 +126,7 @@ class note{
         
     }
 
-    public function addToArchive($id)
+    public static function addToArchive($id)
     {
         $result = false;
         $sql = "update notes set archived = true where note_id = $id"; 
@@ -137,10 +137,10 @@ class note{
         return $result;
         
     }    
-    public function removeFromArchive($id)
+    public static function removeFromArchive($noteid)
     {
         $result = false;
-        $sql = "update notes set archived = false where note_id = $id"; 
+        $sql = "update notes set archived = false where note_id = $noteid"; 
         $return = connection::actionOnDB($sql);
         if($return){
             $result = true;
@@ -170,28 +170,64 @@ class note{
         }
         return $result;
     }
-    public static function dispalayNote($noteTitre,$noteBody,$noteID)
+    public static function dispalayNote($noteTitre,$noteBody,$noteID,$archived,$favorite)
     {
-        echo("<div class='note'>
-        <div noteID='$noteID' class='note_header'>
-        <a id='fav'  class='favorite_button'><img src='../assets/favorite_border_black_24dp.svg'></img> </a>
-        <a id='edit' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
-        <a id='arch' class='archive_button'> <img src='../assets/archive_black_24dp.svg'></img></a>
-        <a id='del$noteID' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
+        if($favorite ==true && $archived ==false ){
+            echo("<div class='note'>
+            <div noteID='$noteID' class='note_header'>
+                <a id='fav'  class='favorite_button'><img favorite='true' src='../assets/favorite_black_24dp.svg'></img> </a>
+                <a id='edit' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
+                <a id='arch' class='archive_button'> <img archieved='false' src='../assets/archive_black_24dp.svg'></img></a>
+                <a id='del' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
+                </div>
+                <div class='title_note'>$noteTitre</div>   
+            <div class='main_note'>$noteBody</div>
+            </div>");
+        }else if($archived == true && $favorite == false){
+            echo("<div class='note'>
+            <div noteID='$noteID' class='note_header'>
+                <a id='fav'  class='favorite_button'><img favorite='false' src='../assets/favorite_border_black_24dp.svg'></img> </a>
+                <a id='edit' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
+                <a id='arch' class='archive_button'> <img archieved='true' src='../assets/unarchive_black_24dp.svg'></img></a>
+                <a id='del' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
+                </div>
+            <div class='title_note'>$noteTitre</div>   
+            <div class='main_note'>$noteBody</div>
+            </div>");
+            
+        }else if($archived == true && $favorite == true){
+            echo("<div class='note'>
+            <div noteID='$noteID' class='note_header'>
+                <a id='fav'  class='favorite_button'><img favorite='true' src='../assets/favorite_black_24dp.svg'></img> </a>
+                <a id='edit' class='edit_button'><img  src='../assets/edit_black_24dp.svg'></img> </a>
+                <a id='arch' class='archive_button'> <img archieved='true' src='../assets/unarchive_black_24dp.svg'></img></a>
+                <a id='del' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
+                </div>
+            <div class='title_note'>$noteTitre</div>   
+            <div class='main_note'>$noteBody</div>
+            </div>");
+        }else{
+            echo("<div class='note'>
+            <div noteID='$noteID' class='note_header'>
+                <a id='fav'  class='favorite_button'><img favorite='false' src='../assets/favorite_border_black_24dp.svg'></img> </a>
+                <a id='edit' class='edit_button'><img src='../assets/edit_black_24dp.svg'></img> </a>
+                <a id='arch' class='archive_button'> <img archieved='false' src='../assets/archive_black_24dp.svg'></img></a>
+                <a id='del' class='delete_button'><svg xmlns='http://www.w3.org/2000/svg'  height='24px' viewBox='0 0 24 24' width='24px' ><path d='M0 0h24v24H0V0z' fill='none'/><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z'/></svg> </a>
+                </div>
+                <div class='title_note'>$noteTitre</div>
+            <div class='main_note'>$noteBody</div>
+            </div>");
+        }
 
-        </div><script>
-        let deee$noteID = document.querySelector('#del$noteID');
-        deee$noteID.addEventListener('click',function(){
-         overlay2.classList.add('to_display');
-         delete_note.classList.add('to_display');
-       let in_his = document.querySelector('#to_be_delete');
-       in_his.setAttribute('value',$noteID);
- 
-        })
-        </script>
+
         
-        <div class='title_note'>$noteTitre</div>
-        <div class='main_note'>$noteBody</div>
-        </div>");
+
+
+
+
+
+
+
+      
     }
 }

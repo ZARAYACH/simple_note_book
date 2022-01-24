@@ -43,7 +43,8 @@
     if($_GET['saved']=="imptyinput"){
     connection::popUp("error","please file your note we connot save impty note");
   }
-}      
+} 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,18 +162,20 @@ Log out</button>
 <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="#ffa600"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
     </div>
     </div>
-    <div class="content">
-
+    <div class="content" id="content">
     <?php
         $return = note::allNotes($userId);
         if($return){
-          $j=1;
           while($row=$return->fetch()){
-            note::dispalayNote($row[1],$row[2],$row[0]);   
+         note::dispalayNote($row[1],$row[2],$row[0],$row[5],$row[6]);  
           }
         }
+      
+        echo("<script>let userID ='$userId'</script"); 
       ?>
     </div>
+      </div>
     <script src="../master_js/script.js"></script>
+    <script  src="../master_js/jquery-3.1.1.min.js"></script> 
 </body>
 </html>
