@@ -163,7 +163,7 @@ class note{
     public static function searchNote($userID,$noteTitle)
     {
         $result = false; 
-        $sql = "select * from notes where user_id = '$userID' and note_titre = '$noteTitle' ";
+        $sql = "select * from notes where user_id = '$userID' and note_titre like '$noteTitle%' ";
         $return = connection::selectionFromDb($sql);
         if($return){
             $result = $return;

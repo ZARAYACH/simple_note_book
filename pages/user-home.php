@@ -90,7 +90,7 @@
     <div class="header">
         <div class="dashbord">Dashboard</div>
              <div class="search">
-            <form action="../pages/user-home.php" method="get"> <input name="search" type="text" placeholder="Search">
+            <form  action="../pages/user-home.php" method="get"> <input id="search" name="search" type="text" placeholder="Search">
             <input type="submit" value="search">  
           </form>
         </div>

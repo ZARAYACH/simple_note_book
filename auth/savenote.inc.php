@@ -9,8 +9,8 @@ if(!empty($_POST["titre"]) and !empty($_POST['note'])){
   $user = unserialize($_SESSION['user']);
   $userId = $user->getId();
   $username = $user->getUsername();
-  $noteTitre=$_POST["titre"];
-  $noteBody = $_POST["note"];
+  $noteTitre=filter_var($_POST["titre"], FILTER_SANITIZE_STRING);
+  $noteBody =filter_var($_POST["note"], FILTER_SANITIZE_STRING); 
   $id=null;
   $note = new note($id,$userId,$noteTitre,$noteBody);
   $return = $note->addNote($note->getUserId(),$note->getNoteTitle(),$note->getNoteBody());
@@ -28,3 +28,4 @@ if(!empty($_POST["titre"]) and !empty($_POST['note'])){
           exit();
   
     }
+    
