@@ -41,7 +41,7 @@
                 let pop_up = `<div class='pop_up'>
                 <div class='x'><button id='close'><img src='../assets/close_black_24dp.svg' alt=''></button></div>
                 <div class='message'>
-                    <img src='../assets/done_black_24dp.svg' alt=''>
+                    <img src='../assets/done_white_24dp.svg' alt=''>
                     <p>\${message}</p></div>
               </div>`
                document.write(pop_up);

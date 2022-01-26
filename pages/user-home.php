@@ -123,26 +123,25 @@ Note Book" transform="translate(265 53)" fill="#707070" font-size="32" font-fami
 </a>
         </div>
         <div class="buttons" >
-      <a href="../pages/user-home.php">
-      <button> <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 31.5 36">
+      <button id="allNotes" > <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 31.5 36">
   <path id="Icon_awesome-book" data-name="Icon awesome-book" d="M31.5,25.313V1.688A1.683,1.683,0,0,0,29.813,0H6.75A6.752,6.752,0,0,0,0,6.75v22.5A6.752,6.752,0,0,0,6.75,36H29.813A1.683,1.683,0,0,0,31.5,34.313V33.188a1.7,1.7,0,0,0-.626-1.315,15.68,15.68,0,0,1,0-5.252A1.676,1.676,0,0,0,31.5,25.313ZM9,9.422A.423.423,0,0,1,9.422,9H24.328a.423.423,0,0,1,.422.422v1.406a.423.423,0,0,1-.422.422H9.422A.423.423,0,0,1,9,10.828Zm0,4.5a.423.423,0,0,1,.422-.422H24.328a.423.423,0,0,1,.422.422v1.406a.423.423,0,0,1-.422.422H9.422A.423.423,0,0,1,9,15.328ZM26.817,31.5H6.75a2.25,2.25,0,0,1,0-4.5H26.817A25.313,25.313,0,0,0,26.817,31.5Z"/>
 </svg>
            
 All notes</button>
       </a>
-            <button><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 34.5 31.654">
+            <button id='favoritesOnly'><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 34.5 31.654">
   <path id="Icon_material-favorite-border" data-name="Icon material-favorite-border" d="M28.012,4.5A10.33,10.33,0,0,0,20.25,8.105,10.33,10.33,0,0,0,12.488,4.5,9.4,9.4,0,0,0,3,13.987c0,6.521,5.865,11.834,14.749,19.907l2.5,2.26,2.5-2.277C31.635,25.821,37.5,20.508,37.5,13.987A9.4,9.4,0,0,0,28.012,4.5Zm-7.59,26.824-.173.172-.172-.172C11.866,23.889,6.45,18.973,6.45,13.987A5.9,5.9,0,0,1,12.488,7.95a6.744,6.744,0,0,1,6.158,4.071h3.226A6.7,6.7,0,0,1,28.012,7.95a5.9,5.9,0,0,1,6.038,6.037C34.05,18.973,28.633,23.889,20.422,31.324Z" transform="translate(-3 -4.5)"/>
 </svg>
 Favorites</button>
-            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35">
+            <button id="archivedOnly" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35">
   <path id="Icon_awesome-box" data-name="Icon awesome-box" d="M34.829,12.619,31.37,2.242A3.272,3.272,0,0,0,28.26,0H18.594V13.125H34.911A3.123,3.123,0,0,0,34.829,12.619ZM16.406,0H6.74A3.272,3.272,0,0,0,3.63,2.242L.171,12.619a3.122,3.122,0,0,0-.082.506H16.406ZM0,15.313V31.719A3.282,3.282,0,0,0,3.281,35H31.719A3.282,3.282,0,0,0,35,31.719V15.313Z"/>
 </svg>
 Archived</button>
-          <a href="../pages/user-home.php?settings=on" id="ss"><svg id="Icon_feather-settings" data-name="Icon feather-settings" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+          <button id="ss"><svg id="Icon_feather-settings" data-name="Icon feather-settings" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
   <path id="Tracé_113" data-name="Tracé 113" d="M22.5,18A4.5,4.5,0,1,1,18,13.5,4.5,4.5,0,0,1,22.5,18Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
   <path id="Tracé_114" data-name="Tracé 114" d="M29.1,22.5a2.475,2.475,0,0,0,.495,2.73l.09.09a3,3,0,1,1-4.245,4.245l-.09-.09a2.5,2.5,0,0,0-4.23,1.77V31.5a3,3,0,1,1-6,0v-.135A2.475,2.475,0,0,0,13.5,29.1a2.475,2.475,0,0,0-2.73.495l-.09.09A3,3,0,1,1,6.435,25.44l.09-.09a2.5,2.5,0,0,0-1.77-4.23H4.5a3,3,0,1,1,0-6h.135A2.475,2.475,0,0,0,6.9,13.5a2.475,2.475,0,0,0-.5-2.73l-.09-.09A3,3,0,1,1,10.56,6.435l.09.09a2.475,2.475,0,0,0,2.73.495h.12A2.475,2.475,0,0,0,15,4.755V4.5a3,3,0,0,1,6,0v.135a2.5,2.5,0,0,0,4.23,1.77l.09-.09a3,3,0,1,1,4.245,4.245l-.09.09a2.475,2.475,0,0,0-.5,2.73v.12A2.475,2.475,0,0,0,31.245,15H31.5a3,3,0,0,1,0,6h-.135A2.475,2.475,0,0,0,29.1,22.5Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
 </svg>
-Settings</a>
+Settings</button>
 
           </form>
             <form action="../auth/logout.inc.php" method="POST">
@@ -153,7 +152,7 @@ Settings</a>
     <path id="Tracé_106" data-name="Tracé 106" d="M36.5,18h-23" transform="translate(2.5 3.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
   </g>
 </svg>
-Log out</button>
+<p>Log Out</p></button>
             </form>
         </div>
     </div>

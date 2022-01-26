@@ -84,5 +84,32 @@ class user{
         $return = connection::actionOnDB($sql);
            return $return;
     }
+    public static function displaySettings($userName,$firstName,$lastName,$email,$admin){
+      echo("
+    <div class='settings'>
+    <div class='header_settings'>Settings</div>
+    <div class='info'>
+      <div class='label' > Username : </div>
+      <div class='user_info'><input disabled id='username' value='$userName'></input></div>
+      <div class='label'>First name :</div>
+      <div class='user_info'><input disabled id='firstName' value='$firstName'></input></div>
+      <div class='label'>Last name :</div>
+      <div class='user_info'><input disabled id='lastName' value='$lastName' ></input></div>
+      <div class='label'>Email :</div>
+      <div class='user_info'><input disabled id='email' value='$email' ></input></div>
+       <form action='../auth/savephoto.inc.php' method='POST' enctype='multipart/form-data' >
+          <div class='wrapp'>
+          <div class='label'>choose your profile image</div>
+         <div class = 'user_info'><label class='lll' for='photo'>CHOOSE</label> <input type='file' name='photo' id='photo'></div>
+          </div>
+          <input type='submit' name='save' value='save'>
+      </form>
+    </div>
+  </div>
+  <script> let button = document.querySelector('.toAdd');
+  button.classList.add('ff');</script>
+            ");
+    }
+    
 
 }

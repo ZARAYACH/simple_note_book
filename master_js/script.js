@@ -132,6 +132,41 @@ for (let i = 0; i < archBtn.length; i++) {
     
 })
 }
+let editBtn = document.querySelectorAll("#edit");
+for (let i = 0; i < editBtn.length; i++) {
+    editBtn[i].addEventListener('click',function(e){
+        let noteID = e.currentTarget.parentNode.getAttribute("noteId")
+        let title_input = e.currentTarget.parentNode.parentNode.querySelector(".title_note input")
+        let body_input = e.currentTarget.parentNode.parentNode.querySelector(".main_note textarea")
+        let editLogo=e.currentTarget.querySelector("img");
+        let edit=editLogo.getAttribute("edit")
+        if(edit == "false"){
+            editLogo.src = "../assets/done_black_24dp.svg"
+            title_input.removeAttribute('disabled')
+            body_input.removeAttribute('disabled')
+            editLogo.setAttribute("edit","true");
+        }else if(edit == "true") {
+            let title = title_input.value
+            let body = body_input.value
+            $(function(){
+            $.ajax({
+                type: 'POST',
+                url:'../auth/userFun.inc.php',
+                data:'what='+"update"+'&noteId='+noteID+'&titleNote='+title+'&bodyNote='+body+'&userId='+userID
+              }).done(function (res){
+                if(res){
+                    $(".content").html(res);
+                 
+                }
+                 
+             })  
+        })
+    }
+     
+          
+    })
+    
+}
 };
 var observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
@@ -266,4 +301,112 @@ search.addEventListener("keyup",function(){
 }})
 }
 )
+
+// for edit button
+let editBtn = document.querySelectorAll("#edit");
+for (let i = 0; i < editBtn.length; i++) {
+    editBtn[i].addEventListener('click',function(e){
+        let noteID = e.currentTarget.parentNode.getAttribute("noteId")
+        let title_input = e.currentTarget.parentNode.parentNode.querySelector(".title_note input")
+        let body_input = e.currentTarget.parentNode.parentNode.querySelector(".main_note textarea")
+        let editLogo=e.currentTarget.querySelector("img");
+        let edit=editLogo.getAttribute("edit")
+        if(edit == "false"){
+            editLogo.src = "../assets/done_black_24dp.svg"
+            title_input.removeAttribute('disabled')
+            body_input.removeAttribute('disabled')
+            editLogo.setAttribute("edit","true");
+        }else if(edit == "true") {
+            let title = title_input.value
+            let body = body_input.value
+            $(function(){
+            $.ajax({
+                type: 'POST',
+                url:'../auth/userFun.inc.php',
+                data:'what='+"update"+'&noteId='+noteID+'&titleNote='+title+'&bodyNote='+body+'&userId='+userID
+              }).done(function (res){
+                if(res){
+                    $(".content").html(res);
+                 
+                }
+                 
+             })  
+        })
+    }
+     
+          
+    })
+    
+}
+let allFav = document.querySelector('#favoritesOnly');
+allFav.addEventListener('click',function(){
+   $(function(){
+    $.ajax({
+        type: 'POST',
+        url:'../auth/userFun.inc.php',
+        data:'what='+"allFav"+'&userId='+userID
+      }).done(function (res){
+        if(res){
+            $(".content").empty();
+            $(".content").html(res);
+         
+        }
+         
+     })  
+   })
+})
+let allArch = document.querySelector("#archivedOnly");
+allArch.addEventListener('click',function(){
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url:'../auth/userFun.inc.php',
+            data:'what='+"allArchived"+'&userId='+userID
+          }).done(function (res){
+            if(res){
+                $(".content").empty();
+                $(".content").html(res);
+             
+            }
+             
+         })  
+       })
+})
+
+let allNotes = document.querySelector("#allNotes");
+allNotes.addEventListener('click',function(){
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url:'../auth/userFun.inc.php',
+            data:'what='+"allNotes"+'&userId='+userID
+          }).done(function (res){
+            if(res){
+                $(".content").empty();
+                $(".content").html(res);
+             
+            }
+             
+         })  
+       })
+
+})
+let settings = document.querySelector("#ss");
+settings.addEventListener('click',function(){
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url:'../auth/userFun.inc.php',
+            data:'what='+"settings"+'&userId='+userID
+          }).done(function (res){
+            if(res){
+                $(".content").empty();
+                $(".content").html(res);
+             
+            }
+             
+         })  
+       })
+
+})
 
