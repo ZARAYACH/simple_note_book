@@ -553,7 +553,7 @@ z-index:10;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
+  margin-bottom: 3rem ;
 }
 .user_info{
   WIDTH: 45%;
@@ -565,13 +565,65 @@ z-index:10;
   text-align: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  font-weight: 700;
 }
-.user_info input{
+.info input{
   width: 100%;
   border: none;
   outline: none;
   background-color: transparent;
   text-align: center;
   font-size: 1.1rem;
+}
+.submit{
+  width: 100%;
+  display: flex;
+  justify-content: right;
+    align-items: center;
+    align-content: center;
+    margin-top: 1rem;
+    padding-right: 2rem;
+    margin-bottom: 1rem ;
+}
+.submit input[type = "button"]{
+  margin-right: 1rem;
+  width: 8rem;
+  height: 2.5rem;
+  background-color: white;
+  border: 3px solid #51a351 ;
+  color: #51a351;
+  font-weight: 700;
+  border-radius: .2rem;
+  transition: .3s;
+  cursor: pointer;
+}
+#default{
+  background-color: white;
+  border: 3px solid rgb(233 40 30) ;
+  color: rgb(233 40 30);
+}
+#accDel{
+  width:11rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-right: 3rem;
+  background-color: rgb(233 40 30);
+  color: white;
+}
+.submit input[type = "button"]:hover{
+  transform: translateY(-10px) ;
+  background-color: #51a351;
+  color: white;
+}
+#default:hover{
+  background-color: rgb(233 40 30);
+  color: white;
+}
+.deleteAccount{
+  width: 100%;
+  margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-content: center;
 }
 .label{
   width: 37%;
@@ -586,20 +638,20 @@ z-index:10;
 /* for the pop message */
 .pop_up{
   width: 22rem;
-height: 5rem;
-position: fixed;
-top: 7rem;
-right: -50rem;
-display: flex;
-BACKGROUND-COLOR: #51a351;
-flex-direction: column;
-PADDING: 1REM 2REM;
-border-radius: 1rem;
-opacity: 0.5;
-z-index: 1000;   
-transition: .5s;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;       
-   }
+  height: 5rem;
+  position: fixed;
+  top: 7rem;
+  right: -50rem;
+  display: flex;
+  BACKGROUND-COLOR: #51a351;
+  flex-direction: column;
+  PADDING: 1REM 2REM;
+  border-radius: 1rem;
+  opacity: 0.5;
+  z-index: 1000;   
+  transition: .5s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;       
+}
 .pop_up:hover{
   opacity: 1;
 }

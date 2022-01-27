@@ -15,7 +15,7 @@ overlay.addEventListener('click',function(){
     writenote.classList.remove("add-note-interface");
 })
 
-// delete verficztion
+// delete verfication
 
 let overlay2 = document.querySelector(".overlay2");
 let cancel = document.querySelector(".cancel");
@@ -167,6 +167,7 @@ for (let i = 0; i < editBtn.length; i++) {
     })
     
 }
+
 };
 var observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
@@ -192,7 +193,6 @@ favBtn[i].addEventListener('click',function(e){
 let fav=favLogo.getAttribute("favorite");
 $(function(){
       if(fav == "false"){
-        
             $.ajax({
                 type: 'POST',
                 url:'../auth/userFun.inc.php',
@@ -393,6 +393,8 @@ allNotes.addEventListener('click',function(){
 })
 let settings = document.querySelector("#ss");
 settings.addEventListener('click',function(){
+    // let btnAdd = document.querySelector('.toAdd');
+    // btnAdd.classList.add('ff');
     $(function(){
         $.ajax({
             type: 'POST',
@@ -402,11 +404,45 @@ settings.addEventListener('click',function(){
             if(res){
                 $(".content").empty();
                 $(".content").html(res);
+                let submitt = document.querySelector("#submit");
+                submitt.addEventListener('click',function(){
+                $(function(){
+                let username = document.querySelector("#userName").value;
+                let lastname = document.querySelector("#lastName").value;
+                let firstname = document.querySelector("#firstName").value;
+                let email = document.querySelector("#email").value;
+                let fd = new FormData();
+                let img = $("#photo")[0].files[0];
+                if(img){
+                    fd.append('file',img)
+                }
+                fd.append('userName',username)
+                    fd.append('firstName',firstname)
+                    fd.append('lastName',lastname)
+                    fd.append('email',email)
+                    fd.append('userId',userID)
+                    fd.append('what',"updateUserInfo")
+                $.ajax({
+                    type: 'POST',
+                    url:'../auth/userFun.inc.php',
+                    data:fd,
+                    contentType: false,
+                    processData: false
+                    
+                }).done(function (res2){
+                    if(res2){
+                        $(".content").html(res2);
+                    }
+                })
+            
+                })
+            })
              
             }
              
          })  
        })
+      
 
 })
 

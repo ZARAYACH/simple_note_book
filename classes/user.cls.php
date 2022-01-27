@@ -74,15 +74,31 @@ class user{
          $return = connection::actionOnDB($sql);
             return $return;
      }
-     public function changeInfo($username,$firstname,$lastname,$email,$password,$admin){
-        $sql= "update users set first_name='$firstname' last_name='$lastname' email='$email' pwd='$password' admin='$admin' where username='$username' ";
+     public function changeInfo($username,$firstname,$lastname,$email,$userID){
+        $sql= "update users set username = '$username',first_name='$firstname' ,last_name='$lastname' ,email='$email' where id='$userID' ";
         $return = connection::actionOnDB($sql);
            return $return;
     }
-    public function deleteAcount($username){
-        $sql= "delete from users where username ='$username'";
+    public function deleteAcount($userId){
+        $sql= "delete from users where id ='$userId'";
         $return = connection::actionOnDB($sql);
            return $return;
+    }
+   
+    public function addUserImg($userId,$imgSrc){
+      $sql= "insert into profilsimg(user_id,ImgSrc) values ('$userId','$imgSrc') ";
+      $return = connection::actionOnDB($sql);
+         return $return;
+  }
+    public function getAllInfoDb($userId){
+      $result = false; 
+      $sql = "select * from users where user_id = '$userId' ";
+      $return = connection::selectionFromDb($sql);
+      if($return){
+          $result = $return;
+      }
+      return $result;
+
     }
     public static function displaySettings($userName,$firstName,$lastName,$email,$admin){
       echo("
@@ -90,24 +106,31 @@ class user{
     <div class='header_settings'>Settings</div>
     <div class='info'>
       <div class='label' > Username : </div>
-      <div class='user_info'><input disabled id='username' value='$userName'></input></div>
+      <div class='user_info'><input  id='userName' value='$userName'></input></div>
       <div class='label'>First name :</div>
-      <div class='user_info'><input disabled id='firstName' value='$firstName'></input></div>
+      <div class='user_info'><input id='firstName' value='$firstName'></input></div>
       <div class='label'>Last name :</div>
-      <div class='user_info'><input disabled id='lastName' value='$lastName' ></input></div>
+      <div class='user_info'><input  id='lastName' value='$lastName' ></input></div>
       <div class='label'>Email :</div>
-      <div class='user_info'><input disabled id='email' value='$email' ></input></div>
-       <form action='../auth/savephoto.inc.php' method='POST' enctype='multipart/form-data' >
+      <div class='user_info'><input  id='email' value='$email' ></input></div>
+       <form action='' method='POST' enctype='multipart/form-data' id='imgForm' >
           <div class='wrapp'>
           <div class='label'>choose your profile image</div>
          <div class = 'user_info'><label class='lll' for='photo'>CHOOSE</label> <input type='file' name='photo' id='photo'></div>
           </div>
-          <input type='submit' name='save' value='save'>
       </form>
+      <div class='submit' >
+      <input type='button' id='default' value='Cancel'>
+      <input type='button' id='submit' name='save' value='Save'>
+   
+      </div>
+      <div class='deleteAccount' >
+      <input type='button' id='accDel' value='Delete My Account'>
+      </div>
+      
     </div>
   </div>
-  <script> let button = document.querySelector('.toAdd');
-  button.classList.add('ff');</script>
+
             ");
     }
     

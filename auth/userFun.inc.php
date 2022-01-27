@@ -2,6 +2,7 @@
 
 require_once "../classes/note.cls.php";
 require_once "../classes/user.cls.php";
+
 session_start();
 if(isset($_POST["what"])){
     if($_POST["what"] == "fav"){
@@ -132,8 +133,35 @@ if(isset($_POST["what"])){
     $admin = $user->getAdmin();
     user::displaySettings($userName,$firstName,$lastName,$email,$admin);
    }
-    
+}else if($_POST["what"]=="updateUserInfo"){
+   if(isset($_SESSION["user"])){
+     $user = unserialize($_SESSION["user"]);
+     $userID = $user->getId();
+    $userName= $_POST["userName"];
+    $firstName = $_POST["firstName"];
+    $lastName = $_POST["lastName"];
+    $email = $_POST["email"];
+    $return = $user->changeInfo($userName,$firstName,$lastName,$email,$userID);
+    if(isset($_FILES["file"])){
+      $name =$userName."|".$_FILES['file']['name'];
+      $temp = $_FILES['file']["tmp_name"];
+      $destination = "../usersimg/".$name;
+      $moved = move_uploaded_file($temp,$destination);
+      if($moved){
+        $added = $user->addUserImg($userID,$destination);
+      }
+    }
+    if($return){
+      $return2 = $user->getAllInfoDb($userId);
+      while($row=$return2->fetch()){
+      user::displaySettings($row[1],$row[2],$row[3],$row[4],$row[6]);
+
+      }
+      
+    }
+  
   }
+   }
 }
 
 
